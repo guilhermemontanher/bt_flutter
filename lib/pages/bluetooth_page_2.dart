@@ -58,8 +58,8 @@ class _BluetoothPage2State extends State<BluetoothPage2> {
 
     //_searchDevice(device.mac);
 
-    //Future(() => _connectToDevice(widget.btDevice));
-    _connect(widget.btDevice);
+    _connectToDevice(widget.btDevice);
+    //_connect(widget.btDevice);
     //_connect(widget.btDevice);
   }
 
@@ -274,6 +274,7 @@ class _BluetoothPage2State extends State<BluetoothPage2> {
   _discoverCharacteristics(BluetoothService service) async {
     var characteristics = service.characteristics;
     for (BluetoothCharacteristic c in characteristics) {
+      print("UUID CHARACTERISTIC - ${c.uuid}");
       if (c.uuid == UART_NOTIFY) {
         characteristicNotify = c;
         _read();
